@@ -161,7 +161,7 @@ async def main():
     await create_account.click()
 
     print("finding the email input field")
-    email = await tab.select("input[type=email]")
+    email = await tab.query_selector("input[type=email]")
 
     # sometimes, email field is not shown, because phone is being asked instead
     # when this occurs, find the small text which says "use email instead"
@@ -209,7 +209,7 @@ async def main():
     await tab
 
     # let's handle the cookie nag as well
-    cookie_bar_accept = await tab.find("accept all", best_match=True)
+    cookie_bar_accept = await tab.query_selector("accept all")
     if cookie_bar_accept:
         await cookie_bar_accept.click()
 
